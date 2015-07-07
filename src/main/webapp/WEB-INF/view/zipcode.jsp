@@ -147,6 +147,31 @@
 		
 	}
 	
+	function convertGZip() {
+		var value = $("#content").val();
+		$.ajax( {   
+		    type : "POST",   
+		    url : "${pageContext.request.contextPath}/utils/gzip", 
+		    data : {
+		      'content' : value
+		     },  
+		    dataType: "json",   
+		    success : function(data) {   
+		        if(data.success){
+		            $("#code").empty();
+		            $("#code").val(data.data);
+		        }   
+		        else{   
+		            alert("设置失败！");   
+		        }   
+		    },   
+		    error :function(){   
+		        alert("网络连接出错！");   
+		    }   
+		});   
+		
+	}
+	
 	function convertBase64() {
 		var value = $("#content").val();
 		$.ajax( {   
@@ -192,11 +217,23 @@
 		</h1>
 		<label> <span>Message :</span> <textarea id="content"
 				name="content" placeholder="Your Message to Us"></textarea>
-		</label> <label> <span>&nbsp;</span> <input type="button"
+		</label> 
+		<label>
+			<span>&nbsp;</span> 
+			<input type="button"
 			class="button" value="Convert(Zip+Base64)" onclick="convertZip()"/>
+		</label> 
+		<label>
+			<span>&nbsp;</span> 
+			<input type="button"
+			class="button" value="Convert(GZip+Base64)" onclick="convertGZip()"/>
+		</label> 
+		<label>
+			<span>&nbsp;</span> 
 			<input type="button"
 			class="button" value="Convert(Base64)" onclick="convertBase64()"/>
-		</label> <label> <textarea id="code" name="code"></textarea>
+		</label> 
+		<label> <textarea id="code" name="code"></textarea>
 		</label>
 	</form>
 </body>

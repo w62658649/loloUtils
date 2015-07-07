@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -66,6 +67,51 @@ public class Base64Utils {
 			if (zout != null) {
 				try {
 					zout.close();
+				} catch (IOException e) {
+				}
+			}
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return compressedStr;
+	}
+	
+	/**
+	 * 使用zip进行压缩
+	 * 
+	 * @param str
+	 *            压缩前的文本
+	 * @return 返回压缩后的文本
+	 */
+	public static final String gzip(String str) {
+		if (str == null)
+			return null;
+		byte[] compressed;
+		ByteArrayOutputStream out = null;
+		GZIPOutputStream zout = null;
+		String compressedStr = null;
+		try {
+			out = new ByteArrayOutputStream();
+			zout = new GZIPOutputStream(out);
+			zout.write(str.getBytes());
+			zout.finish();
+			compressed = out.toByteArray();
+			compressedStr = new sun.misc.BASE64Encoder()
+					.encodeBuffer(compressed);
+//			compressedStr = Base64Utils.encodedByte(compressed);
+//			byte[] b=UrlBase64.encode(compressed);
+//			compressedStr = new String(b,"ISO8859-1");
+		} catch (IOException e) {
+			compressed = null;
+		} finally {
+			if (zout != null) {
+				try {
+			        zout.flush();  
+			        zout.close();
 				} catch (IOException e) {
 				}
 			}
