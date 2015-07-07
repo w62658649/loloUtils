@@ -27,7 +27,7 @@ public class UtilsController {
 			HttpServletResponse response){
 		try {
 			JSONObject json = new JSONObject();
-			//¶ÔÄÚÈİ½øĞĞ×ª»»
+			//å¯¹å†…å®¹è¿›è¡Œè½¬æ¢
 			if(StringUtils.isNotBlank(content)){
 				json.put("success", true);
 				String code = Base64Utils.zip(content);
@@ -53,7 +53,7 @@ public class UtilsController {
 			HttpServletResponse response){
 		try {
 			JSONObject json = new JSONObject();
-			//¶ÔÄÚÈİ½øĞĞ×ª»»
+			//å¯¹å†…å®¹è¿›è¡Œè½¬æ¢
 			if(StringUtils.isNotBlank(content)){
 				json.put("success", true);
 				//zip

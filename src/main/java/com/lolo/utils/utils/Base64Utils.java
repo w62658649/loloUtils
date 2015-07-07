@@ -15,7 +15,7 @@ public class Base64Utils {
 	public final static String ENCODING = "UTF-8";
 
 	/**
-	 * ½øĞĞbase64±àÂë
+	 * è¿›è¡Œbase64ç¼–ç 
 	 * @param str
 	 * @return
 	 */
@@ -36,7 +36,7 @@ public class Base64Utils {
     
     
     /**
-     * ¶ÔÄÚÈİ½øĞĞÑ¹ËõºÍ¼ÓÃÜ
+     * å¯¹å†…å®¹è¿›è¡Œå‹ç¼©å’ŒåŠ å¯†
      * zip
      * @param str
      * @return
@@ -80,7 +80,7 @@ public class Base64Utils {
 	}
 
 	/**
-	 * ¶ÔÄÚÈİ½øĞĞ½âÃÜºÍ½âÑ¹Ëõ
+	 * å¯¹å†…å®¹è¿›è¡Œè§£å¯†å’Œè§£å‹ç¼©
 	 * unzip
 	 * @param compressedStr
 	 * @return
